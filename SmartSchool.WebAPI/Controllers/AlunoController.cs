@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SmartSchool.WebAPI.Data;
 using SmartSchool.WebAPI.Models;
 
 namespace SmartSchool.WebAPI.Controllers
@@ -9,46 +11,24 @@ namespace SmartSchool.WebAPI.Controllers
     [Route("api/[controller]")]
     public class AlunoController : ControllerBase
     {
-        public List<Aluno> Alunos = new List<Aluno>()
-        {
-            new Aluno()
-            {
-                IdAluno = 1,
-                NomeAluno = "Eymard",
-                SobrenomeAluno = "Silva",
-                TelefoneAluno = "123456789",
-            },
-            
-            new Aluno()
-            {
-                IdAluno = 2,
-                NomeAluno = "Virgínia",
-                SobrenomeAluno = "Lorena",
-                TelefoneAluno = "987654321"
-            },
+        private readonly SmartSchoolContext _context;
 
-            new Aluno()
-            {
-                IdAluno = 3,
-                NomeAluno = "Eduardo",
-                SobrenomeAluno = "José",
-                TelefoneAluno = "465798132"
-            },
-        };
-        
-        public AlunoController(){ }
+        public AlunoController(SmartSchoolContext context)
+        {
+            this._context = context;
+        }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(Alunos);
+            return Ok(_context.Alunos);
         }
 
         // api/aluno/{id}
         [HttpGet("byId/{id}")]
         public IActionResult GetById(int id)
         {
-            var aluno = Alunos.FirstOrDefault(a => a.IdAluno == id);
+            var aluno = _context.Alunos.FirstOrDefault(a => a.IdAluno == id);
             
             //validação do aluno e retorno como bad request
             if(aluno == null) return BadRequest("O aluno informado com código " + id + " não foi encontrado.");
@@ -60,7 +40,7 @@ namespace SmartSchool.WebAPI.Controllers
         [HttpGet("ByName")]
         public IActionResult GetByName(string nome)
         {
-            var aluno = Alunos.FirstOrDefault(a =>a.NomeAluno.Contains(nome));
+            var aluno = _context.Alunos.FirstOrDefault(a =>a.NomeAluno.Contains(nome));
             
             //validação do aluno e retorno como bad request
             if(aluno == null) return BadRequest("O aluno informado com nome " + nome + " não foi encontrado.");
@@ -72,7 +52,7 @@ namespace SmartSchool.WebAPI.Controllers
         [HttpGet("ByNameAndSurname")]
         public IActionResult GetByName(string nome, string sobrenome)
         {
-            var aluno = Alunos.FirstOrDefault(a =>a.NomeAluno.Contains(nome) && a.SobrenomeAluno.Contains(sobrenome));
+            var aluno = _context.Alunos.FirstOrDefault(a =>a.NomeAluno.Contains(nome) && a.SobrenomeAluno.Contains(sobrenome));
             
             //validação do aluno e retorno como bad request
             if(aluno == null) return BadRequest("O aluno informado com nome " + nome + " e de sobrenome: " + sobrenome + " não foi encontrado.");
@@ -82,24 +62,45 @@ namespace SmartSchool.WebAPI.Controllers
         [HttpPost]
         public IActionResult Post (Aluno aluno)
         {
+            //implementando de forma simplificada o POST
+            _context.Add(aluno);
+            _context.SaveChanges();
             return Ok(aluno);
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, Aluno aluno)
         {
+            //implementando de forma simplificada o PUT
+            var alunoput = _context.Alunos.AsNoTracking().FirstOrDefault(aput => aput.IdAluno == id);
+            if(alunoput == null) return BadRequest("O Aluno informado para Atualização (PUT) não foi encontrado.");
+
+            _context.Update(aluno);
+            _context.SaveChanges();
             return Ok(aluno);
         }
 
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Aluno aluno)
         {
+            //implementando de forma simplificada o PATCH
+            var alunopatch = _context.Alunos.AsNoTracking().FirstOrDefault(ap => ap.IdAluno == id);
+            if(alunopatch == null) return BadRequest("O Aluno informado para Atualização Parcial (PATCH) não foi encontrado.");
+
+            _context.Update(aluno);
+            _context.SaveChanges();
             return Ok(aluno);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            //implementando de forma simplificada o POST
+            var alunoremover = _context.Alunos.FirstOrDefault(ar => ar.IdAluno == id);
+            if(alunoremover == null) return BadRequest("O Aluno informado para ser removido, não foi encontrado.");
+
+            _context.Remove(alunoremover);
+            _context.SaveChanges();
             return Ok();
         }
     }
