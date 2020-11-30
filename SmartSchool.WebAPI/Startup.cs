@@ -29,12 +29,12 @@ namespace SmartSchool.WebAPI
         {
             //contexto para gerenciar o ND
             services.AddDbContext<SmartSchoolContext>(
-                context => context.UseSqlite(
-                    Configuration.GetConnectionString("Default")
-                )
-            );
+                context => context.UseSqlite(Configuration.GetConnectionString("Default")));
             
-            services.AddControllers();
+            services.AddScoped<IRepository, Repository>();
+            services.AddControllers()
+                    .AddNewtonsoftJson(
+                        opt => opt.SerializerSettings.ReferenceLoopHandling  = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
