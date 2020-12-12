@@ -4,13 +4,17 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.WebAPI.Data;
-using SmartSchool.WebAPI.Dtos;
+using SmartSchool.WebAPI.V2.Dtos;
 using SmartSchool.WebAPI.Models;
 
-namespace SmartSchool.WebAPI.Controllers
+namespace SmartSchool.WebAPI.V2.Controllers
 {
+    /// <summary>
+    /// Controller de Professores
+    /// </summary>
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ProfessorController : ControllerBase
     {
         private readonly IRepository _repositorio;
@@ -23,6 +27,10 @@ namespace SmartSchool.WebAPI.Controllers
         }
 
         //GET
+        /// <summary>
+        /// Método responsável por retornar todos os dados de Professores da SmartSchool API.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -31,7 +39,13 @@ namespace SmartSchool.WebAPI.Controllers
             return Ok(_mapper.Map<IEnumerable<ProfessorDTO>>(professor));
         }
 
+
         // api/Professor/{id}
+        /// <summary>
+        /// Método responsável por retornar um dado específico de todos os dados de Professores da SmartSchool API.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -43,9 +57,14 @@ namespace SmartSchool.WebAPI.Controllers
             //Mapper
             var professorDTO = _mapper.Map<ProfessorDTO>(professor);
 
-            return Ok(professor);
+            return Ok(professorDTO);
         }
 
+        /// <summary>
+        /// Método responsável por retornar um dado específico relacionados a determinado Aluno de todos os dados de Professores da SmartSchool API.
+        /// </summary>
+        /// <param name="alunoId"></param>
+        /// <returns></returns>
         // api/Professor
         [HttpGet("byaluno/{alunoId}")]
         public IActionResult GetByAlunoId(int alunoId)
@@ -56,8 +75,15 @@ namespace SmartSchool.WebAPI.Controllers
             return Ok(_mapper.Map<IEnumerable<ProfessorDTO>>(Professores));
         }
 
+
+
         //POST
         // api/Professor
+        /// <summary>
+        /// Método responsável por submeter a requisição de envio dos dados de um Professor para a SmartSchool API.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(ProfessorRegistrarDTO model)
         {
@@ -76,8 +102,15 @@ namespace SmartSchool.WebAPI.Controllers
             return BadRequest("O professor informado não foi cadastrado.");
         }
 
+
         //PUT
         // api/Professor/{id}
+        /// <summary>
+        /// Método responsável pela atualização dos dados de um Professor para a SmartSchool API.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, ProfessorRegistrarDTO model)
         {
@@ -96,8 +129,16 @@ namespace SmartSchool.WebAPI.Controllers
             return BadRequest("O Professor informado não foi encontrado.");
         }
 
+
+
         //PATCH
         // api/Professor/{id}
+        /// <summary>
+        /// Método responsável pela atualização parcial dos dados de um Professor para a SmartSchool API.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, ProfessorRegistrarDTO model)
         {
@@ -116,8 +157,15 @@ namespace SmartSchool.WebAPI.Controllers
             return BadRequest("O Professor informado para atualização não foi encontrado.");
         }
 
+
+
         //DELETE
         // api/Professor
+        /// <summary>
+        /// Método responsável pela remoção dos dados de um Professor para a SmartSchool API.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
 
         public IActionResult Delete(int id)

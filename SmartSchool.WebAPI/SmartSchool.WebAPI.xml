@@ -1,0 +1,528 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartSchool.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:SmartSchool.WebAPI.V1.Controllers.AlunoController">
+            <summary>
+            Controller de Alunos
+            </summary>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.AlunoController.#ctor(SmartSchool.WebAPI.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.AlunoController.Get">
+            <summary>
+            Método responsável por retornar todos os alunos do SmartSchool API.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.AlunoController.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar apenas um aluno por meio do parâmetro ID do SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.AlunoController.Post(SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO)">
+            <summary>
+            Método responsável por submeter a requisição de envio dos dados de um Aluno para a SmartSchool API.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.AlunoController.Put(System.Int32,SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO)">
+            <summary>
+            Método responsável pela atualização dos dados de um Aluno para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.AlunoController.Patch(System.Int32,SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO)">
+            <summary>
+            Método responsável pela atualização parcial dos dados de um Aluno para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.AlunoController.Delete(System.Int32)">
+            <summary>
+            Método responsável pela remoção dos dados de um Aluno para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SmartSchool.WebAPI.V1.Controllers.ProfessorController">
+            <summary>
+            Controller de Professores
+            </summary>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.ProfessorController.Get">
+            <summary>
+            Método responsável por retornar todos os dados de Professores da SmartSchool API.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.ProfessorController.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar um dado específico de todos os dados de Professores da SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.ProfessorController.GetByAlunoId(System.Int32)">
+            <summary>
+            Método responsável por retornar um dado específico relacionados a determinado Aluno de todos os dados de Professores da SmartSchool API.
+            </summary>
+            <param name="alunoId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.ProfessorController.Post(SmartSchool.WebAPI.V1.Dtos.ProfessorRegistrarDTO)">
+            <summary>
+            Método responsável por submeter a requisição de envio dos dados de um Professor para a SmartSchool API.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.ProfessorController.Put(System.Int32,SmartSchool.WebAPI.V1.Dtos.ProfessorRegistrarDTO)">
+            <summary>
+            Método responsável pela atualização dos dados de um Professor para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.ProfessorController.Patch(System.Int32,SmartSchool.WebAPI.V1.Dtos.ProfessorRegistrarDTO)">
+            <summary>
+            Método responsável pela atualização parcial dos dados de um Professor para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V1.Controllers.ProfessorController.Delete(System.Int32)">
+            <summary>
+            Método responsável pela remoção dos dados de um Professor para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SmartSchool.WebAPI.V1.Dtos.AlunoDTO">
+            <summary>
+            DTO do Aluno para cadastrar/registrar algum dado ou informa��o.
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoDTO.IdAluno">
+            <summary>
+            ID do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoDTO.MatriculaAluno">
+            <summary>
+            Matr�cula do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoDTO.NomeAluno">
+            <summary>
+            Nome do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoDTO.TelefoneAluno">
+            <summary>
+            Telefone do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoDTO.Idade">
+            <summary>
+            Idade do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoDTO.DataInicio">
+            <summary>
+            Data de In�cio do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoDTO.AlunoAtivo">
+            <summary>
+            Valida��o do Aluno
+            </summary>
+        </member>
+        <member name="T:SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO">
+            <summary>
+            DTO do Aluno responsavel por registrar/cadastrar informacoes
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO.IdAluno">
+            <summary>
+            ID do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO.MatriculaAluno">
+            <summary>
+            Matr�cula do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO.NomeAluno">
+            <summary>
+            Nome e sobrenome do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO.TelefoneAluno">
+            <summary>
+            Telefone do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO.DataNascimento">
+            <summary>
+            Data de Nascimento do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO.DataInicio">
+            <summary>
+            Data de In�cio do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO.DataFim">
+            <summary>
+            Data Fim do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.AlunoRegistrarDTO.AlunoAtivo">
+            <summary>
+            Verifica��o/valida��o do status do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorDTO.IdProfessor">
+            <summary>
+            ID do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorDTO.Registro">
+            <summary>
+            Registro do Professor na Institui��o
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorDTO.NomeProfessor">
+            <summary>
+            Nome do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorDTO.TelefoneProfessor">
+            <summary>
+            Telefone do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorDTO.AlunoAtivo">
+            <summary>
+            Valida��o do Aluno de determinado Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorDTO.Disciplinas">
+            <summary>
+            Disciplinas de um Aluno e do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorRegistrarDTO.IdProfessor">
+            <summary>
+            ID do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorRegistrarDTO.Registro">
+            <summary>
+            Registro na Institui��o Acad�mica do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorRegistrarDTO.NomeProfessor">
+            <summary>
+            Nome e sobrenome do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorRegistrarDTO.TelefoneProfessor">
+            <summary>
+            Telefone do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorRegistrarDTO.DataInicio">
+            <summary>
+            Data de In�cio do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorRegistrarDTO.DataFim">
+            <summary>
+            Data Fim do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V1.Dtos.ProfessorRegistrarDTO.AlunoAtivo">
+            <summary>
+            Valida��o/verifica��o dos alunos Ativos do Professor
+            </summary>
+        </member>
+        <member name="T:SmartSchool.WebAPI.V2.Controllers.AlunoController">
+            <summary>
+            Controller de Alunos
+            </summary>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.AlunoController.#ctor(SmartSchool.WebAPI.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.AlunoController.Get">
+            <summary>
+            Método responsável por retornar todos os alunos do SmartSchool API.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.AlunoController.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar apenas um aluno por meio do parâmetro ID do SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.AlunoController.Post(SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO)">
+            <summary>
+            Método responsável por submeter a requisição de envio dos dados de um Aluno para a SmartSchool API.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.AlunoController.Put(System.Int32,SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO)">
+            <summary>
+            Método responsável pela atualização dos dados de um Aluno para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.AlunoController.Patch(System.Int32,SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO)">
+            <summary>
+            Método responsável pela atualização parcial dos dados de um Aluno para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.AlunoController.Delete(System.Int32)">
+            <summary>
+            Método responsável pela remoção dos dados de um Aluno para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SmartSchool.WebAPI.V2.Controllers.ProfessorController">
+            <summary>
+            Controller de Professores
+            </summary>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.ProfessorController.Get">
+            <summary>
+            Método responsável por retornar todos os dados de Professores da SmartSchool API.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.ProfessorController.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar um dado específico de todos os dados de Professores da SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.ProfessorController.GetByAlunoId(System.Int32)">
+            <summary>
+            Método responsável por retornar um dado específico relacionados a determinado Aluno de todos os dados de Professores da SmartSchool API.
+            </summary>
+            <param name="alunoId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.ProfessorController.Post(SmartSchool.WebAPI.V2.Dtos.ProfessorRegistrarDTO)">
+            <summary>
+            Método responsável por submeter a requisição de envio dos dados de um Professor para a SmartSchool API.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.ProfessorController.Put(System.Int32,SmartSchool.WebAPI.V2.Dtos.ProfessorRegistrarDTO)">
+            <summary>
+            Método responsável pela atualização dos dados de um Professor para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.ProfessorController.Patch(System.Int32,SmartSchool.WebAPI.V2.Dtos.ProfessorRegistrarDTO)">
+            <summary>
+            Método responsável pela atualização parcial dos dados de um Professor para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.V2.Controllers.ProfessorController.Delete(System.Int32)">
+            <summary>
+            Método responsável pela remoção dos dados de um Professor para a SmartSchool API.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SmartSchool.WebAPI.V2.Dtos.AlunoDTO">
+            <summary>
+            DTO do Aluno para cadastrar/registrar algum dado ou informacao.
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoDTO.IdAluno">
+            <summary>
+            ID do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoDTO.MatriculaAluno">
+            <summary>
+            Matricula do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoDTO.NomeAluno">
+            <summary>
+            Nome do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoDTO.TelefoneAluno">
+            <summary>
+            Telefone do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoDTO.Idade">
+            <summary>
+            Idade do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoDTO.DataInicio">
+            <summary>
+            Data de inicio do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoDTO.AlunoAtivo">
+            <summary>
+            Validar do Aluno
+            </summary>
+        </member>
+        <member name="T:SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO">
+            <summary>
+            DTO do Aluno responsavel por registrar/cadastrar informacoes
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO.IdAluno">
+            <summary>
+            ID do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO.MatriculaAluno">
+            <summary>
+            Matricula do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO.NomeAluno">
+            <summary>
+            Nome e sobrenome do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO.TelefoneAluno">
+            <summary>
+            Telefone do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO.DataNascimento">
+            <summary>
+            Data de Nascimento do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO.DataInicio">
+            <summary>
+            Data de inicio do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO.DataFim">
+            <summary>
+            Data Fim do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.AlunoRegistrarDTO.AlunoAtivo">
+            <summary>
+            Verificar/validar do status do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorDTO.IdProfessor">
+            <summary>
+            ID do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorDTO.Registro">
+            <summary>
+            Registro do Professor na Instituicao
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorDTO.NomeProfessor">
+            <summary>
+            Nome do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorDTO.TelefoneProfessor">
+            <summary>
+            Telefone do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorDTO.AlunoAtivo">
+            <summary>
+            Valida��o do Aluno de determinado Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorDTO.Disciplinas">
+            <summary>
+            Disciplinas de um Aluno e do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorRegistrarDTO.IdProfessor">
+            <summary>
+            ID do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorRegistrarDTO.Registro">
+            <summary>
+            Registro do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorRegistrarDTO.NomeProfessor">
+            <summary>
+            Nome e sobrenome do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorRegistrarDTO.TelefoneProfessor">
+            <summary>
+            Telefone do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorRegistrarDTO.DataInicio">
+            <summary>
+            Data de começo do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorRegistrarDTO.DataFim">
+            <summary>
+            Data Fim do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.WebAPI.V2.Dtos.ProfessorRegistrarDTO.AlunoAtivo">
+            <summary>
+            Validar/verificar dos alunos Ativos do Professor
+            </summary>
+        </member>
+    </members>
+</doc>
